@@ -1,0 +1,50 @@
+// state hoisting -> dejamos el estado del componente por fuera del mismo
+                    /*                    var myText by rememberSaveable { mutableStateOf("Lan") }
+                                        Column {
+                                            MyTextField(myText) { myText = it }
+                                        }*/
+                    /*val myOptions = getOptions(listOf("Bulbasaur", "Charmander", "Squirtle"))
+                    Column {
+                        MyTriStatusCheckbox()
+                        myOptions.forEach{
+                            MyCheckboxWithTextCompleted(it)
+                        }
+                    }*/
+                    Column {
+                        //MyRadioButtonList(selected) { selected = it }
+
+                        //MyDialogWithCard()
+
+                        //MinimalDialog(onDismissRequest = {})
+
+                        /*AlertDialogExample({}, {}, "Title", "Description", Image(painter = painterResource(id = R.drawable.jc),
+                            contentDescription = "ejemplo"
+                        ))*/
+
+                        var show by remember { mutableStateOf(false) }
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Button(onClick = { show = true }) {
+                                Text(text = "Mostrar dialog")
+                            }
+                            /*AlertDialogExampleLoader(
+                                show = show,
+                                onDismissRequest = { show = false },
+                                onConfirmation = { Log.i("Lan", "click") }
+                            )*/
+                            /*MySimpleCustomDialog(
+                                show = show,
+                                onDismissRequest = { show = false }
+                            )*/
+                            /*MyCustomDialog(
+                                show = show,
+                                onDismissRequest = { show = false }
+                            )*/
+                            MyConfirmationDialog(
+                                show = show,
+                                onDismissRequest = { show = false }
+                            )
+                        }
+                    }
